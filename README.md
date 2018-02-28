@@ -1,6 +1,5 @@
 go-fdup
 =======
-
 find duplicate contents
 
 Usage:
