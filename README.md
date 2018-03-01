@@ -1,6 +1,7 @@
 go-fdup
 =======
-find duplicate contents
+fdup is tool of find duplicate contents  
+actually is compare hash
 
 Usage:
 ------
@@ -8,22 +9,22 @@ display files with have same contents
 
 compare two files
 ```sh
-fdup -- "/path/file1" "/path/file2"
+fdup /path/file1 /path/file2
 ```
 
 check recursive
 ```sh
-fdup -- "/path/dir"
+fdup /path/dir
 ```
 
 specify file and directory
 ```sh
-fdup -- "/path/file" "/path/dir"
+fdup /path/file /path/dir
 ```
 
 with verbose
 ```sh
-fdup -verbose -- "/path/file" "/path/dir"
+fdup -verbose /path/file /path/dir
 ```
 
 Install:

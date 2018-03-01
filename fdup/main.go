@@ -1,7 +1,6 @@
 package main
 
 import (
-	//"crypto/md5"
 	"crypto/sha512"
 	"flag"
 	"fmt"
