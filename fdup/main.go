@@ -14,9 +14,9 @@ import (
 
 // base information
 const (
-	name                 = "fdup"
-	version              = "1.0.0dev"
-	defaultHashAlgorithm = "sha512_256"
+	Name                 = "fdup"
+	Version              = "1.0.0dev"
+	DefaultHashAlgorithm = "sha512_256"
 )
 
 type option struct {
@@ -30,13 +30,14 @@ var opt = &option{}
 func init() {
 	flag.BoolVar(&opt.version, "version", false, "show version")
 	flag.BoolVar(&opt.verbose, "verbose", false, "verbose")
-	flag.StringVar(&opt.hash, "hash", defaultHashAlgorithm, "specify use hash algorithmm")
+	flag.StringVar(&opt.hash, "hash", DefaultHashAlgorithm, "specify use hash algorithmm")
 }
 
-func run(stdout, stderr io.Writer, usehash string, verbose bool, targets []string) int {
-	log.SetPrefix("[" + name + "]:")
+// Run main
+func Run(stdout, stderr io.Writer, usehash string, verbose bool, targets []string) int {
+	log.SetPrefix("[" + Name + "]:")
 	log.SetOutput(stdout)
-	errlogger := log.New(stderr, "["+name+"]:", log.Lshortfile)
+	errlogger := log.New(stderr, "["+Name+"]:", log.Lshortfile)
 
 	if !verbose {
 		log.SetOutput(ioutil.Discard)
@@ -122,8 +123,8 @@ func run(stdout, stderr io.Writer, usehash string, verbose bool, targets []strin
 func main() {
 	flag.Parse()
 	if opt.version {
-		fmt.Fprintf(os.Stdout, "%s version %s\n", name, version)
+		fmt.Fprintf(os.Stdout, "%s version %s\n", Name, Version)
 		os.Exit(0)
 	}
-	os.Exit(run(os.Stdout, os.Stderr, opt.hash, opt.verbose, flag.Args()))
+	os.Exit(Run(os.Stdout, os.Stderr, opt.hash, opt.verbose, flag.Args()))
 }
