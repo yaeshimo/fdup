@@ -1,41 +1,26 @@
 go-fdup
 =======
-fdup is tool of find duplicate contents  
-actually is compare hash
+Find duplicate files
 
 Usage:
 ------
-display files with have same contents
+Display files if have same contents
 
-compare two files
+Compare two files
 ```sh
 fdup /path/file1 /path/file2
 ```
 
-check recursive
+Check recursive
 ```sh
 fdup /path/dir
-```
-
-specify file and directory
-```sh
-fdup /path/file /path/dir
-```
-
-with verbose
-```sh
-fdup -verbose /path/file /path/dir
 ```
 
 Install:
 --------
 ```sh
-go get -v -u github.com/kamisari/go-fdup/fdup
+go get github.com/kamisari/go-fdup/fdup
 ```
-
-TODO:
------
-impl
 
 License:
 --------
