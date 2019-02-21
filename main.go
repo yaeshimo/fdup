@@ -37,14 +37,17 @@ func makeUsage(w *io.Writer) func() {
 		flag.CommandLine.SetOutput(*w)
 		// two spaces
 		fmt.Fprintf(*w, "Description:\n")
-		fmt.Fprintf(*w, "  Short description\n\n")
+		fmt.Fprintf(*w, "  Find duplicate files\n\n")
 		fmt.Fprintf(*w, "Usage:\n")
-		fmt.Fprintf(*w, "  %s [Options]\n\n", Name)
+		fmt.Fprintf(*w, "  %s [Options] -- [PATH]...\n\n", Name)
 		fmt.Fprintf(*w, "Options:\n")
 		flag.PrintDefaults()
 		fmt.Fprintf(*w, "\n")
 		examples := `Examples:
-  $ ` + Name + ` -help # Display help message
+  $ ` + Name + ` -help                         # Display help message
+  $ ` + Name + ` /path/file1 /path/file2       # Compare two files
+  $ ` + Name + ` /path/dir                     # Check recursive
+  $ ` + Name + ` -verbose /path/dir /path/file # With verbose
 `
 		fmt.Fprintf(*w, "%s\n", examples)
 	}
