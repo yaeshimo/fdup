@@ -42,6 +42,7 @@ func makeUsage(w *io.Writer) func() {
 		fmt.Fprintf(*w, "  %s [Options]\n\n", Name)
 		fmt.Fprintf(*w, "Options:\n")
 		flag.PrintDefaults()
+		fmt.Fprintf(*w, "\n")
 		examples := `Examples:
   $ ` + Name + ` -help # Display help message
 `
