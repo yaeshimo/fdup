@@ -27,11 +27,6 @@ var (
 
 var usageWriter io.Writer = os.Stderr
 
-// Name is name of executable
-// Example:
-//	var usageWriter io.Writer = os.Stdout
-//	flag.Usage = makeUsage(&usageWriter)
-//	flag.Usage()
 func makeUsage(w *io.Writer) func() {
 	return func() {
 		flag.CommandLine.SetOutput(*w)
@@ -85,6 +80,15 @@ func init() {
 	flag.Parse()
 }
 
+// TODO:
+// 1. impl struct and separate to methods
+//type DuplicateFiles struct {
+//	// hash function
+//	Function string              `json:"function"`
+//	HashMap  map[string][]string `json:"hash_map"`
+//}
+// 2. remove? stdout and stderr
+// 3. consider to use goroutine for calculate of hash
 func run(stdout io.Writer, stderr io.Writer, hashF string, paths []string) error {
 	var hash hash.Hash
 	switch hashF {
