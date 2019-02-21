@@ -30,7 +30,7 @@ Install
 -------
 
 ```sh
-go get github.com/kamisari/fdup
+go get github.com/yaeshimo/fdup
 ```
 
 License
