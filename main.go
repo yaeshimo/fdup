@@ -110,7 +110,14 @@ func run(stdout io.Writer, stderr io.Writer, hashF string, paths []string) error
 		}
 		err = filepath.Walk(abs, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
-				return err
+				switch {
+				case os.IsPermission(err) || os.IsNotExist(err):
+					// TODO: set exit code to not 0
+					ErrLog.Println(err)
+					return nil
+				default:
+					return err
+				}
 			}
 			if !info.Mode().IsRegular() || avoidMap[path] {
 				return nil
@@ -121,15 +128,13 @@ func run(stdout io.Writer, stderr io.Writer, hashF string, paths []string) error
 
 			f, err := os.Open(path)
 			if err != nil {
-				ErrLog.Println(err)
-				return nil
+				return err
 			}
 			defer f.Close()
 
 			hash.Reset()
 			if _, err := io.Copy(hash, f); err != nil {
-				ErrLog.Println(err)
-				return nil
+				return err
 			}
 			key := fmt.Sprintf("%x", hash.Sum(nil))
 			if d, ok := hashMap[key]; ok {
