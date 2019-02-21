@@ -1,27 +1,39 @@
-go-fdup
-=======
-Find duplicate files
+fdup
+====
 
-Usage:
-------
-Display files if have same contents
+Find duplicate files have contents
 
-Compare two files
+Usage
+-----
+
 ```sh
+# Prints help information
+fdup -help
+```
+
+```sh
+# Compare two files
 fdup /path/file1 /path/file2
 ```
 
-Check recursive
 ```sh
+# Check recursive
 fdup /path/dir
 ```
 
-Install:
---------
 ```sh
-go get github.com/kamisari/go-fdup/fdup
+# Check files and directories with verbose
+fdup -verbose /path/file1 /path/file2 /path/dir1/ /path/dir2/
 ```
 
-License:
---------
+Install
+-------
+
+```sh
+go get github.com/kamisari/fdup
+```
+
+License
+-------
+
 MIT
